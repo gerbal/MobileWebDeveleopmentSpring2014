@@ -13,21 +13,39 @@ body > * {
 content {
     background-color: #FFF;
     margin: 1.5em 0;
-    flex: 1 1 35em;
-    flex-basis: 50%;
+    flex: 1 1 auto;
+    /*    flex-basis: 50%;*/
     max-width: 50em;
     justify-content: flex-start;
     align-content: flext-start;
     margin: 0em;
 }
+/*
+content p,
+h1,
+h2 {
+    display: inline-flex;
+    flex: 1 1 100%;
+}
+*/
+
 slugs {
     background-color: #FFF;
-    flex: 1 1 3em;
+    flex: 1 1 auto;
     flex-basis: fit-content;
     padding: 1em;
 }
 @media screen and (max-width: 48em) {
+    body {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    header {
+        order: -1;
+        flex: 1 1 auto;
+    }
     nav {
+        order: 0;
         display: inline-flex;
         flex: 1 1 auto;
         margin: 0;
@@ -36,9 +54,10 @@ slugs {
         box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
         display: flex;
     }
-    nav nav_item {
+    nav_item,
+    nav_expand {
         display: inline-flex;
-        flex: 1 1 auto;
+        flex: 1 0 auto;
         color: #333;
         text-decoration: none;
         display: block;
@@ -46,11 +65,19 @@ slugs {
         color: white;
         font-weight: bold;
     }
-    nav nav_item:hover {
+    nav_item:hover,
+    nav_expand:hover {
         background: #00b7f5;
     }
-    header {
-        flex: 1 1 auto;
+    content {
+        order: 1;
+    }
+    slugs {
+        order: 2;
+    }
+    footer {
+        order: 3;
+        flex: 1 0 auto;
     }
 }
 header {
@@ -59,6 +86,9 @@ header {
     order: -1;
     justify-content: flex-start;
     align-content: flext-start;
+}
+header h1 {
+    font-size: 3em;
 }
 h1,
 h2,
@@ -70,9 +100,10 @@ h6 {
     font-weight: normal;
     margin-bottom: 0.8em;
     padding-top: 1em;
+    color: #555;
 }
 h1 {
-    font-size 3em;
+    font-size: 2em;
     font-weight: 700;
     padding-top: .5em;
     color: #555;
@@ -87,17 +118,31 @@ h2 {
         justify-content: space-around;
         align-content: flext-start;
     }
+    nav nav_expand {
+        display: none;
+        height: 0;
+        overflow: hidden;
+    }
 }
 @media screen and (max-width: 600px) {
     nav {
         flex-flow: column wrap;
         padding: 0;
     }
-    nav nav_item {
+    nav_item,
+    nav_expand {
         text-align: center;
         padding: 10px;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    nav nav_expand {
+        display: inline-flex;
+        height: 1em;
+        overflow: hidden;
+    }
+    nav:not(:hover):not(:target) > nav_item {
+        display: none;
     }
 }
 @media screen and (min-width: 48em) {
@@ -145,6 +190,11 @@ h2 {
         min-width: initial;
         width: 4em;
         display: inline-flex;
+    }
+    nav nav_expand {
+        display: none;
+        height: 0;
+        overflow: hidden;
     }
     footer p {
         flex: 1 1 auto;
