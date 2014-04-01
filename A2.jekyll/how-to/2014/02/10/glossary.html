@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Python Glossary</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Python Glossary</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Elliott Hauser
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">10 Feb 2014</p>
+
+<div class="post">
+<p>The below is a reference of Python- and programming-related terms.  It&#39;s been modified from the one <a href="http://interactivepython.org/runestone/static/thinkcspy/GeneralIntro/introduction.html#glossary">in our textbook</a>.</p>
+
+<p><strong>activecode</strong>
+A unique interpreter environment that allows Python to be executed from within a web browser.  Our textbook and our class site use activecode to make runnable Python.</p>
+
+<p><strong>algorithm</strong>
+A general step by step process for solving a problem.</p>
+
+<p><strong>bug</strong>
+An error in a program.</p>
+
+<p><strong>byte code</strong>
+An intermediate language between source code and object code. Many modern languages first compile source code into byte code and then interpret the byte code with a program called a virtual machine.</p>
+
+<p><strong>codelens</strong>
+An interactive environment that allows the user to control the step by step execution of a Python program</p>
+
+<p><strong>comment</strong>
+Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.  In Python, comments are written after <code>#</code>:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="c"># This is a comment</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;This is code&quot;</span><span class="p">)</span> <span class="c"># Comments can happen here too</span>
+</code></pre></div>
+<p><strong>compile</strong>
+To translate a program written in a high-level language into a low-level language all at once, in preparation for later execution.</p>
+
+<p><strong>debugging</strong>
+The process of finding and removing any of the three kinds of programming errors.  Read more about debugging <a href="http://interactivepython.org/runestone/static/thinkcspy/Debugging/debugIntro.html">in our textbook here</a>.</p>
+
+<p><strong>exception</strong>
+Another name for a runtime error.</p>
+
+<p><strong>executable</strong>
+Another name for object code that is ready to be executed.</p>
+
+<p><strong>formal language</strong>
+Any one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs; all programming languages are formal languages.</p>
+
+<p><strong>function</strong>
+A function is a bit of reusable code that can be <strong>called</strong> after being defined.  Functions can be defined by you in your code or they can be defined in <strong>libraries</strong> that can be <strong>imported</strong>.</p>
+
+<p><strong>high-level language</strong>
+A programming language like Python that is designed to be easy for humans to read and write.</p>
+
+<p><strong>import</strong>
+You&#39;ll often see <code>import</code> statements at the top of a bit of code.  These import <strong>libraries</strong> of pre-written code.  Libraries is a general term; in Python, these are also called <strong>modules</strong></p>
+
+<p><strong>interpret</strong>
+To execute a program in a high-level language by translating it one line at a time.</p>
+
+<p><strong>libraries</strong>
+Libraries are large collections of pre-written code designed to be <strong>imported</strong>.</p>
+
+<p><strong>low-level language</strong>
+A programming language that is designed to be easy for a computer to execute; also called machine language or assembly language.</p>
+
+<p><strong>modules</strong>
+This is Python&#39;s word for <strong>libraries</strong></p>
+
+<p><strong>natural language</strong>
+Any one of the languages that people speak that evolved naturally.</p>
+
+<p><strong>object code</strong>
+The output of the compiler after it translates the program.</p>
+
+<p><strong>parse</strong>
+To examine a program and analyze the syntactic structure.</p>
+
+<p><strong>portability</strong>
+A property of a program that can run on more than one kind of computer.</p>
+
+<p><strong>print function</strong>
+A function used in a program or script that causes the Python interpreter to display a value on its output device.</p>
+
+<p><strong>problem solving</strong>
+The process of formulating a problem, finding a solution, and expressing the solution.</p>
+
+<p><strong>program</strong>
+A sequence of instructions that specifies to a computer actions and computations to be performed.</p>
+
+<p><strong>programming language</strong>
+A formal notation for representing solutions.</p>
+
+<p><strong>Python shell</strong>
+An interactive user interface to the Python interpreter. The user of a Python shell types commands at the prompt (&gt;&gt;&gt;), and presses the return key to send these commands immediately to the interpreter for processing.</p>
+
+<p><strong>runtime error</strong>
+An error that does not occur until the program has started to execute but that prevents the program from continuing.</p>
+
+<p><strong>semantic error</strong>
+An error in a program that makes it do something other than what the programmer intended.</p>
+
+<p><strong>semantics</strong>
+The meaning of a program.</p>
+
+<p><strong>shell mode</strong>
+A style of using Python where we type expressions at the command prompt, and the results are shown immediately. Contrast with source code, and see the entry under Python shell.</p>
+
+<p><strong>source code</strong>
+A program, stored in a file, in a high-level language before being compiled or interpreted.</p>
+
+<p><strong>syntax</strong>
+The structure of a program.  Python has very light syntax compared to other languages.  It is relatively unique in that indentation plays a role in syntax.</p>
+
+<p><strong>syntax error</strong>
+An error in a program that makes it impossible to parse — and therefore impossible to interpret.</p>
+
+<p><strong>token</strong>
+One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.</p>
+
+</div>
+
+<div class="end">
+	
+		
+	Elliott Hauser is a PhD Student in information science at UNC Chapel Hill.  He's hacking education as one of the cofounders of Trinket.io. Find <strong>Elliott Hauser</strong> on <a href="http://twitter.com/hauspoor">Twitter</a>, <a href="http://github.com/eah13">Github</a>, and <a href="http://www.elliotthauser.com">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

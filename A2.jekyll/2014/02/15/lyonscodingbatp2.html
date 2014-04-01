@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Allen Codingbat Exercises Part 2</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Allen Codingbat Exercises Part 2</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Allen Lyons
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">15 Feb 2014</p>
+
+<div class="post">
+<p>These Codingbat exercises were a bit more complicated than the last set. But most
+of them were still pretty short, even if they took longer to figure out. Here&#39;s 
+the screenshots</p>
+
+<h2 id="toc_0">Warmups 2</h2>
+
+<p><img src="http://i.imgur.com/rE4d9cN.png" alt="Warmup Checklist"></p>
+
+<p>I completed the Warmups.</p>
+
+<h2 id="toc_1">Strings 2</h2>
+
+<p><img src="http://i.imgur.com/r3mcHCz.png" alt="Warmup Checklist"></p>
+
+<p>I completed the Strings</p>
+
+<h2 id="toc_2">Lists 2</h2>
+
+<p><img src="http://i.imgur.com/F57XrrU.png" alt="Warmup Checklist"></p>
+
+<p>I completed the Lists</p>
+
+<h2 id="toc_3">Logic 2</h2>
+
+<p><img src="http://i.imgur.com/n5JI1qx.png" alt="Warmup Checklist"></p>
+
+<p>I completed the Logic!</p>
+
+<p>And here are 3 exercises I thought were interesting and/or challenging and/or
+the first three exercises because I was lazy and didn&#39;t want to look around for
+the ones that were actually difficult or interesting.</p>
+
+<h2 id="toc_4">string_splosion</h2>
+
+<p>*
+Given a non-empty string like &quot;Code&quot; return a string like &quot;CCoCodCode&quot;.*</p>
+
+<p>I just like the word stringsplosion.</p>
+
+<p><script type="text/javascript">
+idmods.push(String())
+</script>
+
+<pre><textarea id='code' rows="12" cols="80">
+
+
+def string_splosion(str):
+  result = ""
+  for i in range(len(str)+1):
+    result = result + str[:i]
+  return result
+  
+print string_splosion('Code')
+print string_splosion('abc')
+print string_splosion('ab')
+
+</textarea></pre><div class="codeblock">
+<button id='btn'>Run</button>
+<p>Output: (<a href="#" id="clearoutput">clear</a>)</p>
+
+<pre class="output" id="edoutput">Press Run to see the output of the code above</pre>
+
+<p><canvas id="mycanvas" height="400" width="400" style="border-style: solid; display: none"></canvas>
+</div></p>
+
+<h2 id="toc_5">array123</h2>
+
+<p>*Given an array of ints, return True if .. 1, 2, 3, .. appears in the array somewhere. *</p>
+
+<p>I like this problem because it shows how important it is to test for every possible
+case that might be entered. In this problem I was able to get a checkmark and 
+complete the problem by doing this:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def array123(nums):
+  if 1 in nums and 2 in nums and 3 in nums:
+     return True
+  return False
+</code></pre></div>
+<p>However this ignores a really obvious case which is if the numbers 1, 2, and 3
+are all in the array but not in the order 1, 2, 3. Weirdly, codingbat did not test
+for that case and so I was able to complete the problem using code that doesn&#39;t work
+for all cases.</p>
+
+<p>Here&#39;s the actual solution:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def array123(nums):
+  for i in range(len(nums)-2):
+    if nums[i]==1 and nums[i+1]==2 and nums[i+2]==3:
+      return True
+  return False
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">array123([1, 1, 2, 3, 1]) → True
+array123([1, 1, 2, 4, 1]) → False
+array123([1, 1, 2, 1, 2, 3]) → True
+</code></pre></div>
+<h2 id="toc_6">string_match</h2>
+
+<p><em>Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring. So &quot;xxcaazz&quot; and &quot;xxbaaz&quot; yields 3, since the &quot;xx&quot;, &quot;aa&quot;, and &quot;az&quot; substrings appear in the same place in both strings.</em></p>
+
+<p>This one tripped me up for a bit because the problem forgot to mention that one
+string could be longer than the other one. So I was getting a lot of index out of 
+range results. After figuring that out, the problem was a fairly simple for loop
+with a boolean expression to check the substrings.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def string_match(a, b):
+  count = 0
+  shorter = min(len(a), len(b))
+  for i in range(shorter-1):
+    if a[i] == b[i] and a[i+1] == b[i+1]:
+       count += 1
+  return count
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">string_match(&#39;xxcaazz&#39;, &#39;xxbaaz&#39;) → 3
+string_match(&#39;abc&#39;, &#39;abc&#39;) → 2
+string_match(&#39;abc&#39;, &#39;axc&#39;) → 0
+</code></pre></div>
+<p>That&#39;s my stuff! </p>
+
+</div>
+
+<div class="end">
+	
+		
+	Allen is a fourth year UNC undergraduate in the BSIS program. No idea what he is going to do after he graduates but hopefully he'll be doing something that makes money. Likes playing with new tech, watch tv and movies, reading comic books, playing video games, and spending time with his friends and family. Depending on the whole job thing he may also be consuming a considerable amount of alcohol this semester. Find <strong>Allen Lyons</strong> on <a href="http://twitter.com/lions8lyons">Twitter</a>, <a href="http://github.com/lyonsa">Github</a>, and <a href="http://www.unc.edu/~lyonsa/">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

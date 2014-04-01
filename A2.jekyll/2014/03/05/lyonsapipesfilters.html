@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Allen's Pipes and Filters Exercises</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Allen's Pipes and Filters Exercises</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Allen Lyons
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">05 Mar 2014</p>
+
+<div class="post">
+<h2 id="toc_0">Pipes and Filters</h2>
+
+<p><strong>Exercises</strong></p>
+
+<p>For most of these exercises I just did some Google searches for command tools I didn&#39;t know and there were plenty of
+useful results. The IBM webpage specifically had an answer to why it would be a bad idea to remove all duplicates
+from large data sets, explaining that &quot;it is a bad idea to use uniq or any other tool to remove duplicate lines from
+files containing financial or other important data. In such cases, a duplicate line almost always means another
+transaction for the same amount, and removing it would cause a lot of trouble for the accounting department. 
+Do not do it!&quot;
+The internet is a very useful tool!</p>
+
+<ol>
+<li><p>Explain <code>sort -n</code></p>
+
+<p>So the reason <code>sort -n</code> works for sorting numbers, but <code>sort</code> does not, is that <code>sort</code> automatically 
+ sorts assuming the input is a string. So it will only look at the first character to sort files and 
+ will then look at the second character to sort strings that have the same first character, etc. This is 
+ why 10 comes before 2 when you run sort. <code>sort -n</code> does a numeral sort, so it takes the input as integers 
+ and so it can successfully sort 2 and 10.</p></li>
+<li><p>What is the difference between <code>wc -l mydata.dat</code> and <code>wc -l &lt; mydata.dat</code></p>
+
+<p>This is explained a couple of times in the explanations. <code>&lt;</code> redirects the input, i.e., to read from a file
+ instead of from standard input. In the first case, <code>wc</code> gets a command line parameter telling it what file to 
+ open. In the second, wc doesn&#39;t have any command line parameters, so it reads from standard input, but we have
+ told the shell to send the contents of <code>mydata.dat</code> to <code>wc</code>&#39;s standard input. The output is almost exactly the 
+ same. The input without the <code>&lt;</code> prints out the line count and the name of the file. With the <code>&lt;</code> print out just
+ the line count but not the name of the file.</p></li>
+<li><p>Why do you think <code>uniq</code> only removes adjacent duplicated lines? (Hint: think about very large data sets.) 
+ What other command could you combine with it in a pipe to remove all duplicated lines?</p>
+
+<p>Large data sets may have duplicate lines for different sets of data. So removing these dupicates means you&#39;re
+ losing useful data. In order to remove all duplicates, you can do <code>|sort|uniq</code> which can also create the problem of
+ original order being lost in the file, which can be a problem if order is important.</p></li>
+<li><p>What text passes through each of the pipes and the final redirect in the pipeline below?
+ <code>cat animals.txt | head -5 | tail -3 | sort -r &gt; final.txt</code></p>
+
+<p>This is a pretty long command, but it&#39;s not as complicated as it looks. 
+The <code>cat</code> reads the file <code>animals.txt</code>.
+Then it takes the first 5 lines using <code>head -5</code> and then the last three lines from those five, by piping it 
+through <code>tail -3</code>. 
+Then it goes through <code>sort -r</code> which does a reverse sort of what&#39;s left. Finally it stores the three reverse
+sorted lines in a file called <code>final.txt</code>. And we&#39;re done :D</p>
+
+<p>This is what gets put into <code>final.txt</code>: 
+<code>
+2012-11-06,rabbit
+2012-11-06,deer
+2012-11-05,raccoon
+</code></p></li>
+<li><p>The command <code>cut -d , -f 2 animals.txt</code> produces the following output: </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">deer
+rabbit
+raccoon
+rabbit
+deer
+fox
+rabbit
+bear
+</code></pre></div>
+<p>What other command(s) could be added to this in a pipeline to find out what animals the file contains (without any duplicates in their names)? </p>
+
+<p>What this command does is it extracts sections of each line, based on a delimeter denoted by the <code>-d</code> followed 
+by <code>,</code>. The <code>-f 2</code> means to extract the second field. So the whole statement means to take animals.txt, seperate
+feilds based on <code>,</code> and then extract the second feild on each line. In this case the animal names. We can add <code>sort</code>
+and <code>uniq</code> on the extracted sections to remove duplicates.</p></li>
+</ol>
+
+</div>
+
+<div class="end">
+	
+		
+	Allen is a fourth year UNC undergraduate in the BSIS program. No idea what he is going to do after he graduates but hopefully he'll be doing something that makes money. Likes playing with new tech, watch tv and movies, reading comic books, playing video games, and spending time with his friends and family. Depending on the whole job thing he may also be consuming a considerable amount of alcohol this semester. Find <strong>Allen Lyons</strong> on <a href="http://twitter.com/lions8lyons">Twitter</a>, <a href="http://github.com/lyonsa">Github</a>, and <a href="http://www.unc.edu/~lyonsa/">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

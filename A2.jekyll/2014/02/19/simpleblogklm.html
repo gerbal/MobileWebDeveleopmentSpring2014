@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Simple Flask blog</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Simple Flask blog</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Katie Meyer
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">19 Feb 2014</p>
+
+<div class="post">
+<p>My blog is currently live on heroku: <a href="http://silshack-katielmeyer.herokuapp.com/">http://silshack-katielmeyer.herokuapp.com/</a></p>
+
+<p>When I first tried to deploy the blog in class I got an &#39;application error&#39; when I tried to view the app. After Grant fixed the environment setup script,
+I followed the instructions on the smartypant&#39;s blog under Trouble, and was annoyed that it didn&#39;t same to make any difference: the error was still
+there. It&#39;s really convenient that Grant handled all the complexity behind the app to make it easier, but the downside of skipping that complexity
+is that you can&#39;t really debug if you&#39;re not learning the process yourself. So I figured since it was only a few short steps anyway, I&#39;d scrap the whole
+thing and follow the steps again, assuming it was my error and I&#39;d missed something. It was only after I got the new blog app on heroku that I realized
+I&#39;d just forgotten to push the changes from the fixed scripts to heroku...</p>
+
+<p>Anyway, now that it&#39;s up there, I really like this app! It&#39;s certainly no WordPress, the name &#39;Simple&#39; is very fitting. But it does
+just about everything you&#39;d need a little blog to do. </p>
+
+<p>One weird thing I noticed: I uploaded a JPG of a piglet through the browser admin interface (because, why not) into my first post. It worked fine.
+I pulled the udpates from heroku, then I changed my font in the settings.py config file, and pushed back to heroku. Somehow that broke
+the image link. I checked the simplhack uploads folder and saw it wasn&#39;t there, so I uploaded it to that directory through nitrous, committed, pushed.
+(I&#39;ve had similar issues at work with version control software, Rational Team Concert, not transferring images). No luck. Here&#39;s where a little more
+complexity in the admin interface might be useful.</p>
+
+<p>UPDATE: About five minutes after writing that I figured out the filename the blog post was referencing was one it had assigned to the upload image.
+When I manually changed it to match the filename of the image that was actually in the uploads directory, it worked fine. So maybe there&#39;s still 
+a problem with pulling down images from the heroku instance of the app into nitrous, but I guess you can push them into heroku from nitrous.</p>
+
+<p>I played around a bit in the CSS, changing some of the text formatting. I didn&#39;t like the red hover text, so I switched it to blue in layout.css.</p>
+
+<p>I also wanted some special formatting on the blog title text, so I added a new class for it on the h1 element in the layout template, and 
+got rid of the line break element (<br/>) to bring the tagline up a bit...</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;header&gt;
+       &lt;h1 class=&quot;blog-title&quot;&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
+</code></pre></div>
+<p>...Then added styles for it in layout.css.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">h1.blog-title a{
+    font-size: 60px;
+    font-family: &#39;Shadows Into Light&#39;, serif;
+    color: #555;
+    border-bottom: none;
+    line-height: 55px;
+}
+h1.blog-title a:hover {
+  color:#04E0CA;
+}
+</code></pre></div>
+<p>And I wanted a special Google font (Shadows into Light) for that blog title, so I had to tack it into <head> on the layout template.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;link href=&#39;//fonts.googleapis.com/css?family=Shadows+Into+Light:400,900&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39;&gt;
+</code></pre></div>
+<p>Finally, to play around with the layout I nixed the fixed sidebar (so it&#39;ll scroll down with the posts) and increased the sidebar width. Since this app
+uses Bootstrap (a 12-column responsive framework, <a href="http://getbootstrap.com/">http://getbootstrap.com/</a>) I could do that easily in the layout.html template by just changing
+the classes of the div elements for the sidebar and main content.</p>
+
+<p>For the sidebar:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> &lt;div class=&quot;span4&quot;&gt;
+</code></pre></div>
+<p>For the main content:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;div class=&quot;span8&quot;&gt;
+</code></pre></div>
+<p>Since my sidebar isn&#39;t fixed anymore, I got rid of the &#39;hidden phone&#39; columns between the sidebar and main content.</p>
+
+</div>
+
+<div class="end">
+	
+		
+	Katie is a first year MSIS student from Raleigh NC. She's also a Web UI Developer at IBM. Find <strong>Katie Meyer</strong> on <a href="http://twitter.com/katielmeyer">Twitter</a>, <a href="http://github.com/katielmeyer">Github</a>, and <a href="http://www.katielmeyer.net">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

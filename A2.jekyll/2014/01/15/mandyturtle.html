@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Mandy's Turtle Exercise</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Mandy's Turtle Exercise</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Mandy Gooch
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">15 Jan 2014</p>
+
+<div class="post">
+<p>This is my turtle code. His name is Bob. He is your furry friend. You can personalize Bob by entering in the background color, 
+Bob&#39;s color, Bob&#39;s outline color, the size of Bob&#39;s outline, and the color of Bob&#39;s eyes. </p>
+
+<p>I started playing with this code earlier in the day. I mainly wanted to figure out how to make smoother curves use for loops. </p>
+
+<p>It took a bit of time to figure out the angles, etc. </p>
+
+<p>I also decided to add a sun, because I found some lovely code from <a href="http://silshack.github.io/fall2013/post/2013/09/09/Sophie.html">here</a> and <a href="http://silshack.github.io/fall2013/gmclendon/2013/09/09/grants-turtle.html">here</a>. These codes helped to clean up my image a bit.</p>
+
+<p>Overall, I enjoyed the exercise. It was challenging and helped me to better understand what I was doing and how to manipulate the code.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">import turtle
+wn = turtle.Screen()
+
+#set background color
+background_color = raw_input(&quot;What color should the background be?&quot;)
+wn.bgcolor(background_color)
+
+#create sun here
+sun = turtle.Turtle()
+sun.color(&quot;yellow&quot;)
+sun.fillcolor(&quot;yellow&quot;)
+
+sun.begin_fill()
+sun.penup()
+sun.backward(20)
+sun.left(90)
+sun.forward(125)
+sun.pendown()
+sun.circle(50)
+sun.hideturtle()
+sun.end_fill()
+
+bob = turtle.Turtle()
+
+#user questions about bob here
+bob_color = raw_input(&quot;What color should Bob be?&quot;)
+bob.fillcolor(bob_color)
+
+bob_pencolor = raw_input(&quot;What color should Bob&#39;s outline be?&quot;)
+bob.pencolor(bob_pencolor)
+
+bob_size = raw_input(&quot;What size line should Bob be drawn with?&quot;)
+bob.pensize(int(bob_size))
+
+mary_eyes = raw_input(&quot;What color are Bob&#39;s eyes?&quot;)
+
+#start building bob here
+bob.begin_fill()
+bob.forward(30)
+bob.left(60)
+bob.forward(20)
+bob.right(140)
+bob.forward(20)
+
+for x in range(6):
+  bob.left(5)
+  bob.forward(10)
+
+bob.left(120)
+bob.forward(30)
+
+for y in range(5):
+  bob.right(5)
+  bob.forward(10)
+
+for z in range(40):
+  bob.right(5)
+  bob.forward(1)
+
+for v in range(3):
+  bob.right(-2)
+  bob.forward(10)
+
+for b in range(6):
+  bob.right(-13)
+  bob.forward(7)
+
+for n in range(6):
+    bob.right(10)
+    bob.forward(10)
+
+bob.right(48)    
+bob.forward(80)  
+bob.right(30)
+
+for g in range(4):
+  bob.left(-20)
+  bob.forward(20)
+
+bob.forward(5)
+
+for x in range(5):
+  bob.left(5)
+  bob.forward(10)
+
+bob.forward(2)
+bob.left(-140)
+bob.forward(24)
+bob.left(40)
+
+bob.end_fill()
+bob.hideturtle()
+
+#start eye code here
+bob_eye = turtle.Turtle()
+bob_eye.shape(&quot;circle&quot;)
+bob_eye.pencolor(&quot;white&quot;)
+bob_eye.fillcolor(mary_eyes)
+bob_eye.penup()
+bob_eye.right(90)
+bob_eye.forward(20)
+bob_eye.stamp()
+bob_eye.left(90)
+bob_eye.forward(30)
+bob_eye.stamp()
+
+wn.exitonclick()
+</code></pre></div>
+<p><img src="http://i.imgur.com/Jxspcwq.png" alt="Turtle image"></p>
+
+</div>
+
+<div class="end">
+	
+		
+	Mandy is a second year MSLS student. She is from Virginia and has a background in Asian Studies. Currently she works as a Research Data Coordinator at The Odum Institute at UNC. Find <strong>Mandy Gooch</strong> on <a href="http://twitter.com/">Twitter</a>, <a href="http://github.com/agooch">Github</a>, and <a href="">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

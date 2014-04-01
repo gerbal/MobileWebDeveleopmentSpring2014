@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Getting Started with Nitrous.io and Jekyll</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Getting Started with Nitrous.io and Jekyll</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Grant McLendon
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">29 Jan 2014</p>
+
+<div class="post">
+<h2 id="toc_0">Getting started with Nitrous</h2>
+
+<p>First thing, go the <a href="https://www.nitrous.io/join/R2AIjhSAO64">Nitrous.io</a> and log in using Github. </p>
+
+<p>Now got to <strong>Boxes</strong> and <a href="https://www.nitrous.io/app#/intro/create">create a box</a>. The type doesn&#39;t really matter, but Django is  best for us right now.</p>
+
+<p>Don&#39;t worry, you don&#39;t need to pay for more N2O, the free 155 is more than enough to do everything we need to do for our class. </p>
+
+<p>Now your box is running you can click on it and click <strong>IDE</strong>.  </p>
+
+<p>Now you should be looking at a black screen with several different sub-windows in it. </p>
+
+<p>In front of you is a full-fledge linux/unix terminal with all the power therein. This is where we will be spending the rest of the semester.</p>
+
+<h2 id="toc_1">Getting the Blog Going</h2>
+
+<p>Now we need to set up git so we can talk to Github</p>
+
+<p>If you haven&#39;t done this already, do the following:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">git config --global user.email <span class="s2">&quot;your@email.com&quot;</span>
+git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
+git config --global core.editor nano
+git config --global color.ui <span class="nb">true</span>
+</code></pre></div>
+<p>Now we can get our fork of the SilsHack Site:</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">git clone https://github.com/<span class="o">[</span>githubusername<span class="o">]</span>/spring2014.git 
+</code></pre></div>
+<p>If we want to render it though, we need to install Jekyll</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">gem install github-pages
+</code></pre></div>
+<p>And wait for it to finish.</p>
+
+<p>Now if you Change Directory (cd) to the spring 2014 directory we can test to see that the site works properly</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nb">cd </span>spring2014
+jekyll serve
+</code></pre></div>
+<p>Now, go to <strong>Preview</strong> -&gt; <strong>Port 4000</strong> and add <strong>/spring2014/</strong> to the end of the URL.</p>
+
+<h2 id="toc_2">Pushing changes back up</h2>
+
+<p>Now, suppose you&#39;ve made some changes to the site and want to push them up to your github repo so you can open a pull request to get it into the Class Site</p>
+
+<p>We need to check and see what&#39;s up in our local git repository, and what files we need to add by running</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"> git status
+</code></pre></div>
+<p>Next, we need to make a commit. Do the following in the spring2014 directory</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"> git add _posts/date-newpost.md <span class="c">#This makes sure Git knows the post exists</span>
+ git commit -m <span class="s2">&quot;A Commit Message, be descriptive&quot;</span>
+ git push origin gh-pages
+</code></pre></div>
+<p>And now, if you check your <strong>Github</strong> and you should see the changes you made.</p>
+
+</div>
+
+<div class="end">
+	
+		
+	Grant is a first year MSIS student. He's from Chapel Hil and like playing with new technologies and getting way in over his head. Find <strong>Grant McLendon</strong> on <a href="http://twitter.com/gerbal100">Twitter</a>, <a href="http://github.com/gerbal">Github</a>, and <a href="http://grantmclendon.com">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

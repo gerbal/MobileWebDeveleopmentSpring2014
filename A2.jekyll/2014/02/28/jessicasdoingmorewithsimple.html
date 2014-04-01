@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Jessica's Attempt at Doing More</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Jessica's Attempt at Doing More</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Jessica Feng
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">28 Feb 2014</p>
+
+<div class="post">
+<p>My Simple page can be viewed <a href="http://silshack-jskaa.herokuapp.com/%22Jessica&#x27;s%20Simple%20Page%22">here</a></p>
+
+<p>I had a bit of trouble with this exercise first, as I was unfamiliar with a lot of the syntax that was being used in
+both the templates as well as simple.py. I could tell what bits and pieces of the code did, but some of the language
+was unfamiliar, so I didn&#39;t know what function it had and if it was necessary or situational. I actually did the exact
+same thing Oak did, where I wasn&#39;t very sure of what I was doing, so I made small little changes where I could check 
+and see if the code I wrote did what I expected it to do. </p>
+
+<p>The first thing I did was create a branch to work on so I could scratch it all if I broke something important. I then created
+an about button. I didn&#39;t need it to actually lead me anywhere yet, but I just needed something which would work as a link to 
+the about page at some point in the future. I did this by going into layout.html and finding the section which created 
+the navigation bar on the side. Good thing I can still use HTML! I added in a new list item in order to act as the about 
+button, and while I did not know where the anchor should lead to,I followed the form of the other list items such as the
+ones for Twitter, Github, etc. I didnt know what language it was in, but hey, if you don&#39;t know how, imitate 
+(Thank you Grant, for the go-ahead). </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;li&gt;&lt;p&gt;&lt;a href=&quot; &quot;&gt;About&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+</code></pre></div>
+<p>With that, I could preview my blog and see an about button. When I clicked on it, it led me nowhere though. Not surprising,
+as I knew that the <code>about</code> path didn&#39;t exist anywhere yet. On to the next bit!</p>
+
+<p>Well I still needed an about page, right? This part was much easier, as I just copied the syntax of the 404 page, changing
+the parts that I needed to. Once again, I am not familiar with the language, but I sort of knew what it was doing. My code for my about.html page was taken directly from the 404 page, with just the text changed to show that it was an 
+about page.</p>
+
+<p>With my about page created and a link in existence, I just needed to somehow connect the two. This is where all the 
+not-so-subtle pointing at simple.py came into play. 
+I saw that in simple.py, there were several <code>@app.route(&quot;####&quot;)</code> items which corresponded to various other pages, 
+such as 404, 500, and post ids. Once again, if you don&#39;t know how, imitate! I took the basic format of one of the simpler
+pages, and changed it to something along the lines of</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">@app.route(&quot;/about&quot;)
+def about():
+  return AHHHHHHHH
+</code></pre></div>
+<p>So when I went back into preview mode and clicked on my about link, a basic whie page popped up with the text AHHHHHHHH
+in the upper corner. Cool! This was where I needed to specify exaclty what the route <code>/about</code> should lead to.
+Keeping in mind the name I had used in the first step of this exercise, my code ended up being</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">@app.route(&quot;/about&quot;)
+def about():
+  return render_template(&#39;about.html&#39;, now=datetime.datetime.now(), is_admin=is_admin())
+</code></pre></div>
+<p>Now when I went to preview my blog, the about button linked me to my basic about.html page.</p>
+
+<p>Isn&#39;t it nice when things work out?</p>
+
+</div>
+
+<div class="end">
+	
+		
+	Jessica is a senior information science student at UNC. Find <strong>Jessica Feng</strong> on <a href="http://twitter.com/">Twitter</a>, <a href="http://github.com/">Github</a>, and <a href="">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

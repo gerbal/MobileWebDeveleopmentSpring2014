@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Brittany's Data Structures Exercises</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Brittany's Data Structures Exercises</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Brittany Hayes
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">11 Feb 2014</p>
+
+<div class="post">
+<h2 id="toc_0">Below is my code for each of the four data structures exercises</h2>
+
+<h3 id="toc_1">Exercise 1</h3>
+
+<p><em>Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.</em></p>
+
+<p>This one wasn&#39;t too bad. The main thing I had a bit of difficulty figuring out was how to strip punctuation from the string. After a bit of googling, I came across a <a href="http://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string-in-python">stackoverflow question</a> that addressed this issue</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">#!/usr/bin/python
+import sys
+import string
+
+def stringManipulation(file):
+    &#39;&#39;&#39;
+    Tokenizes a set of text into each word, removing punctuation and making lowercase
+    Returns an array with all instances of words
+    &#39;&#39;&#39;
+
+    file = open(file)
+    modifiedWords = []    #variable used to store all of the stripped tokens
+    for line in file.readlines():
+        cleanedLine = line.strip()  #remove whitespace
+        words = cleanedLine.split()  #split each line into a list of individual strings
+        for word in words:
+            word = word.translate(string.maketrans(&quot;&quot;,&quot;&quot;), string.punctuation).lower() #remove punctuation and lowercase, code modified from here: http://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string-in-python
+            modifiedWords = modifiedWords + [word]  #concat arrays to create one big array of all words
+    return modifiedWords    #return array of all words
+</code></pre></div>
+<h3 id="toc_2">Exercise 2</h3>
+
+<p><em>Modify your program from the previous exercise to read the book you downloaded, skip over the header information at the beginning of the file, and process the rest of the words as before.</em></p>
+
+<p>This was a bit harder, because I wasn&#39;t sure how much of the header to remove (or even where the header ended and the book began). I decided to just go with all the text occurring after the * * * START OF THIS PROJECT GUTENBERG EBOOK.... * * * . This still includes some text that probably isn&#39;t desirable, but I wasn&#39;t sure what other pattern I could use to let the program know that the text was beginning. Rest of the code was almost identical to prior exercise.
+Since the next step was to come up with word counts, I decided to use this function like a map function in a map-reduce problem. I added a 1 to each string, so that in the next step the totals could be easily calculated. Along the same lines, I also had to figure out how to sort the text, which was probably the most difficult part of this problem for me.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def stringManipulationPG(file):
+    &#39;&#39;&#39;
+    Goes to the beginning of a Project Gutenberg book and tokenizes text into words, removing punctuation and making lowercase. 
+    Returns a list of &#39;word,value&#39; pairs for each instance of a token output to the file &#39;output.txt.&#39; 
+    Sorts list in preparation for reducing step
+    &#39;&#39;&#39;
+
+    startBook = False
+    totalWords = 0
+    fullArray = []
+    output = &#39;&#39;
+    file = open(file)
+    for line in file.readlines():
+        if line.find(&quot;*** START OF THIS PROJECT GUTENBERG EBOOK&quot;) != -1:
+            startBook = True
+        elif line.find(&quot;*** END OF THIS PROJECT GUTENBERG EBOOK&quot;) != -1: #reached end of ebook, so stop adding lines
+            startBook = False       
+        elif startBook and line.find(&quot;*** START OF THIS PROJECT GUTENBERG EBOOK&quot;) == -1 and len(line) &gt; 1:
+            cleanedLine = line.strip()
+            words = cleanedLine.split()
+            modifiedWords = []
+            for word in words:
+                word = word.translate(string.maketrans(&quot;&quot;,&quot;&quot;), string.punctuation).lower() #used code at following link: http://stackoverflow.com/questions/265960/best-way-to-strip$
+                if word != &quot;&quot;:
+                    modifiedWords = modifiedWords + [word]
+                    totalWords = totalWords + 1
+            fullArray = fullArray + modifiedWords
+    for element in sorted(fullArray):
+        output = output + element+&quot;,1\n&quot;
+    with open(&#39;output.txt&#39;, &#39;w&#39;) as f:    #modified code here: http://stackoverflow.com/questions/2373555/how-to-save-the-output-to-a-text-file-for-a-python-script
+        f.write(output)
+    return &#39;output.txt&#39;
+</code></pre></div>
+<h3 id="toc_3">Exercise 3</h3>
+
+<p><em>Modify the program from the previous exercise to print the 20 most frequently-used words in the book.</em></p>
+
+<p>I took an Intro to Big Data class last semester, so we did some basic programming for things like this. I first modified some code for a reducer, which I used to reduce the file that was output through the previous exercise&#39;s function. After that, I wrote a second function that sorted the results, getting the top 20 frequency counts. Then it found the first 20 words that had those frequency counts. The most troublesome part of this exercise for me was again the sorting, as well as getting my loops right so that the output wouldn&#39;t include multiple instances of the same value.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def reducer(file):
+    &#39;&#39;&#39;
+    Reduces the file produced by stringManipulationPG.py, returning a single total for each token. 
+    Returns output in plain text file, &#39;output.txt&#39;. 
+    Code recycled from INLS690: Intro to Big Data &amp; NoSQL, Erik Scott (modified delimeter from &quot;\t&quot; to &quot;,&quot;)
+    &#39;&#39;&#39;
+
+    output = &#39;&#39;
+    (last_key, sum_val) = (None, 0)
+    file = open(file)
+    for line in file.readlines():
+        (key, val) = line.strip().split(&quot;,&quot;) #use &quot;,&quot; as delimiter instead of &#39;\t&#39;
+        if last_key and last_key != key:
+            output = output + last_key+&quot;,&quot;+str(sum_val)+&quot;\n&quot;
+            (last_key, sum_val) = (key, int(val))
+        else:
+            (last_key, sum_val) = (key, sum_val + int(val))
+
+    if last_key:
+        output = output + last_key + &quot;,&quot; + str(sum_val) + &quot;\n&quot;
+    with open(&#39;output.txt&#39;,&#39;w&#39;) as f:
+        f.write(output)
+    return &#39;output.txt&#39;
+
+def printTopWords(file):
+    &#39;&#39;&#39;
+    Finds top 20 most frequently occurring terms in a file. 
+    Input file expected to come from reducer.py output. Returns output in plain text file, &#39;output.txt&#39; 
+    &#39;&#39;&#39;
+
+    fullArray = []
+    numArray = []
+    file = open(file)
+    for line in file.readlines():
+        line = line.strip()
+        fullArray = fullArray + [line]    #create list with all lines as elements
+    for element in sorted(fullArray):
+        numArray = numArray + [int(element[element.find(&quot;,&quot;)+1:])]    #extract numbers from elements
+    numArray.sort(reverse=True)      #sort numbers into descending order
+    for element in fullArray:
+        for num in numArray[0:19]:    #find items in fullarray whose final digits match those of the first 20 of the numarray     
+            if int(element[element.find(&quot;,&quot;)+1:]) == num:    
+                if element in fullArray:
+                    fullArray.remove(element)    #remove element in order to prevent multiple instances of the same element being printed
+                    print element               
+</code></pre></div>
+<h3 id="toc_4">Exercise 4</h3>
+
+<p><em>Modify the previous program to read a word list (see Section 9.1) and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?</em></p>
+
+<p>My main issue here was figuring out the logic of the loops that I included at the end of the code. The nested for-loops, figuring out if I needed to break out of them, etc was tricky. I tried breaking at different spots, triggering the boolean at different points, etc and running to see what my output was. I tested in this way until the output was what I expected. I also found the need for two files (the &#39;dictionary&#39; and whatever input used) to be a bit difficult. I assumed that the <a href="http://thinkpython.com/code/words.txt">words.txt file</a> was something already on the user&#39;s machine, but perhaps I should have just included it as an argument of the function. Figuring out how to use file inputs was one of the big things I didn&#39;t know how to do before I did all of these exercises, so I had to do a bit of searching to figure that out. I was used to using sys.stdin() and issuing command line statements like &#39;cat file.txt | python program.py &gt; output.txt&#39;.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def checkForWords(file):
+    &#39;&#39;&#39;
+    Compares words in an input document file to a master word list, &#39;words.txt&#39;. 
+    Prints words that are not present
+    &#39;&#39;&#39;
+
+    file = open(file)
+    allWords = open(&#39;words.txt&#39;)
+    dictionary = [line.rstrip(&#39;\r\n&#39;) for line in allWords] #modified code found here: http://stackoverflow.com/questions/14535619/remove-line-break-from-each-element-in-python
+    for line in file.readlines():
+        line = line.strip()
+        words = line.split()
+        for word in words:
+            word = word[0:word.find(&quot;,&quot;)]
+            found = False
+            index = 0
+            for element in dictionary:
+                if found:
+                    break
+                if word == element:
+                    found = True
+                    break
+                elif word != element and index &lt; len(dictionary)-1:
+                    index = index + 1
+                else:
+                    print &quot;The word &quot; + word + &quot; is not in the dictionary&quot;
+                    break
+</code></pre></div>
+<h2 id="toc_5">FULL PROGRAM WITH EXAMPLE COMMANDS</h2>
+
+<p>I used the following file as my book.txt input: <a href="http://www.gutenberg.org/cache/epub/44848/pg44848.txt">http://www.gutenberg.org/cache/epub/44848/pg44848.txt</a>
+The words input was taken from the following link: <a href="http://thinkpython.com/code/words.txt">http://thinkpython.com/code/words.txt</a></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">#!/usr/bin/python
+import sys
+import string
+
+
+def stringManipulation(file):
+    &#39;&#39;&#39;
+    Tokenizes a set of text into each word, removing punctuation and making lowercase. 
+    Returns an array with all instances of words
+    &#39;&#39;&#39;
+
+    file = open(file)
+    modifiedWords = []
+    for line in file.readlines():
+        cleanedLine = line.strip()
+        words = cleanedLine.split()
+        for word in words:
+            word = word.translate(string.maketrans(&quot;&quot;,&quot;&quot;), string.punctuation).lower()
+            modifiedWords = modifiedWords + [word]
+    return modifiedWords
+
+
+def stringManipulationPG(file):
+    &#39;&#39;&#39;
+    Goes to the beginning of a Project Gutenberg book and tokenizes text into words, removing punctuation and making lowercase. 
+    Returns a list of &#39;word,value&#39; pairs for each instance of a token output to the file &#39;output.txt&#39;. 
+    Sorts list in preparation for reducing step
+    &#39;&#39;&#39;
+
+    startBook = False
+    totalWords = 0
+    fullArray = []
+    output = &#39;&#39;
+    file = open(file)
+    for line in file.readlines():
+        if line.find(&quot;*** START OF THIS PROJECT GUTENBERG EBOOK&quot;) != -1:
+            startBook = True
+        elif line.find(&quot;*** END OF THIS PROJECT GUTENBERG EBOOK&quot;) != -1: #reached end of ebook, so stop adding lines
+            startBook = False           
+        elif startBook and line.find(&quot;*** START OF THIS PROJECT GUTENBERG EBOOK&quot;) == -1 and len(line) &gt; 1:
+            cleanedLine = line.strip()
+            words = cleanedLine.split()
+            modifiedWords = []
+            for word in words:
+                word = word.translate(string.maketrans(&quot;&quot;,&quot;&quot;), string.punctuation).lower() #used code at following link: http://stackoverflow.com/questions/265960/best-way-to-strip$
+                if word != &quot;&quot;:
+                    modifiedWords = modifiedWords + [word]
+                    totalWords = totalWords + 1
+            fullArray = fullArray + modifiedWords
+    for element in sorted(fullArray):
+        output = output + element+&quot;,1\n&quot;
+    with open(&#39;output.txt&#39;, &#39;w&#39;) as f:    #modified code here: http://stackoverflow.com/questions/2373555/how-to-save-the-output-to-a-text-file-for-a-python-script
+        f.write(output)
+    return &#39;output.txt&#39;
+
+
+def reducer(file):
+    &#39;&#39;&#39;
+    Reduces the file produced by stringManipulationPG.py, returning a single total for each token. 
+    Returns output in plain text file, &#39;output.txt&#39;. 
+    Code recycled from INLS690: Intro to Big Data &amp; NoSQL (modified delimeter from &quot;\t&quot; to &quot;,&quot;)
+    &#39;&#39;&#39;
+
+    output = &#39;&#39;
+    (last_key, sum_val) = (None, 0)
+    file = open(file)
+    for line in file.readlines():
+        (key, val) = line.strip().split(&quot;,&quot;) #was \t
+        if last_key and last_key != key:
+            output = output + last_key+&quot;,&quot;+str(sum_val)+&quot;\n&quot;
+            (last_key, sum_val) = (key, int(val))
+        else:
+            (last_key, sum_val) = (key, sum_val + int(val))
+
+    if last_key:
+        output = output + last_key+&quot;,&quot;+str(sum_val)+&quot;\n&quot;
+    with open(&#39;output.txt&#39;,&#39;w&#39;) as f:
+        f.write(output)
+    return &#39;output.txt&#39;
+
+def printTopWords(file): 
+    &#39;&#39;&#39;
+    Finds top 20 most frequently occurring terms in a file. 
+    Input file expected to come from reducer.py output. Returns output in plain text file, &#39;output.txt&#39;. 
+    &#39;&#39;&#39;
+
+    fullArray = []
+    numArray = []
+    lowest = 0
+    topItem = &#39;&#39;
+    file = open(file)
+    for line in file.readlines():
+        line = line.strip()
+        fullArray = fullArray + [line]
+    for element in sorted(fullArray):
+        numArray = numArray + [int(element[element.find(&quot;,&quot;)+1:])]
+    numArray.sort(reverse=True)
+    print numArray[0:19]
+    for element in fullArray:
+        for num in numArray[0:19]:
+            if int(element[element.find(&quot;,&quot;)+1:]) == num:
+                if element in fullArray:
+                    fullArray.remove(element)
+                    print element
+
+def checkForWords(file):
+    &#39;&#39;&#39;
+    Compares words in an input document file to a master word list, &#39;words.txt&#39;. 
+    Prints words that are not present
+    &#39;&#39;&#39;
+
+    file = open(file)
+    allWords = open(&#39;words.txt&#39;)
+    dictionary = [line.rstrip(&#39;\r\n&#39;) for line in allWords] #modified code found here: http://stackoverflow.com/questions/14535619/remove-line-break-from-each-element-in-python
+    for line in file.readlines():
+        line = line.strip()
+        words = line.split()
+        for word in words:
+            word = word[0:word.find(&quot;,&quot;)]
+            found = False
+            index = 0
+            for element in dictionary:
+                if found:
+                    break
+                if word == element:
+                    found = True
+                    break
+                elif word != element and index &lt; len(dictionary)-1:
+                    index = index + 1
+                else:
+                    print &quot;The word &quot; + word + &quot; is not in the dictionary&quot;
+                    break
+
+def readFile(file):
+    &#39;&#39;&#39;
+    used to print output files
+    &#39;&#39;&#39;
+
+    file = open(file)
+    for line in file.readlines():
+        line = line.strip()
+        print line
+
+
+print stringManipulation(&#39;book.txt&#39;)
+readFile(reducer(stringManipulationPG(&#39;book.txt&#39;)))
+printTopWords(reducer(stringManipulationPG(&#39;book.txt&#39;)))
+checkForWords(reducer(stringManipulationPG(&#39;book.txt&#39;)))
+</code></pre></div>
+</div>
+
+<div class="end">
+	
+		
+	Brittany is a second year MSIS student. She is interested in information retrieval, data mining, and natural language processing. Find <strong>Brittany Hayes</strong> on <a href="http://twitter.com/">Twitter</a>, <a href="http://github.com/britth">Github</a>, and <a href="">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Libby's Coding Bat exercises, Part Deux</title>
+    <meta name="viewport" content="width=device-width">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/spring2014/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/xq-light.css">
+    <link rel="stylesheet" type="text/css" href="/spring2014/css/codemirror.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/spring2014/css/main.css">
+    <link rel="shortcut icon" href="/spring2014/favicon.ico">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+    
+    <!--Code Mirror and Console scripts-->
+    <script type="text/javascript">
+        var idmods = new Array();
+    </script>
+</head>
+
+<body>
+    <!-- Ribbon -->
+
+    <img style="position: absolute; top: 0; right: 0; border: 0; height: 135px; width: 135px; z-index:10; pointer-events:none;"  src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    <svg style="position: absolute; top: 0; right: 0; border: 0; z-index:15;" version="1.1" pointer-events="none" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="135px" height="135px" viewBox="0 0 135 135" enable-background="new 0 0 135 135" xml:space="preserve">
+      <a xlink:href="https://github.com/silshack/spring2014" pointer-events="painted" >
+        <polygon opacity="00" fill="purple" stroke="#000000" stroke-miterlimit="10" points="135,0 0,0 135,135 " />
+      </a>
+    </svg>
+
+    <div class="container">
+        <div class="site">
+            <div class="header">
+                <h1 class="title"><a href="/spring2014/">SILShack Spring 2014</a></h1>
+                <p>
+                    
+                    <a class="extra" href="/spring2014/syllabus.html">syllabus</a>
+                    
+                    <a class="extra" href="/spring2014/schedule.html">schedule</a>
+                    
+                    <a class="extra" href="/spring2014/exercises.html">exercises</a>
+                    
+                    <a class="extra" href="/spring2014/how-to.html">how-to</a>
+                    
+                    <a class="extra" href="/spring2014/people.html">people</a>
+                    
+                    <a class="extra" href="/spring2014/feedback.html">feedback</a>
+                    
+                    <a class="extra" href="/spring2014/music.html">music</a>
+                      
+                    <a class="extra" href="/spring2014/console.html">console</a>
+                     
+                </p>
+            </div>
+            <div class="content">
+            <h2>Libby's Coding Bat exercises, Part Deux</h2>
+
+<p>
+
+
+by 
+
+
+    
+        
+		
+        	Libby Livingston
+        
+    
+
+
+</p> <!-- /.byline -->
+
+<p class="meta">15 Feb 2014</p>
+
+<div class="post">
+<h1 id="toc_0">The Exercises</h1>
+
+<p>Some of these were real doozies. I would have been entirely lost on some, were it not for the long winded people on stackoverflow who like to correct each other &amp; provide detailed explanations.</p>
+
+<h3 id="toc_1">1. String-2: double_char</h3>
+
+<p>This was one of the easier ones for me - I got all green on the first go. If only the logic problems went so painlessly...</p>
+
+<p><em>Given a string, return a string where for every char in the original, there are two chars.</em></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def double_char(str):
+  result = &#39;&#39;
+  for letter in str:
+    result = result + letter*2
+  return result
+</code></pre></div>
+<h3 id="toc_2">2. Logic-2: make_bricks</h3>
+
+<p>Oh dear oh dear oh dear. This problem.
+For something that is 6 lines of code, it was incredibly hard to work out.
+The first thing we need to do, is determine if there actually enough bricks total to meet the goal, whether or not they are the right sizes. If not, it&#39;s an automatic False.
+If there are enough, we need to then determine what the remainder is when you divide the goal by 5. If there are enough small bricks to cover the remainder, it&#39;s True.
+Otherwise, False.</p>
+
+<p><em>We want to make a row of bricks that is goal inches long. We have a number of small bricks (1 inch each) and big bricks (5 inches each). Return True if it is possible to make the goal by choosing from the given bricks. This is a little harder than it looks and can be done without any loops.</em></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def make_bricks(small, big, goal):
+  if goal &gt; small + big*5:
+    return False
+  elif (goal%5 &lt;= small):
+    return True
+  else: return False
+</code></pre></div>
+<h3 id="toc_3">3. Logic-2: no_teen_sum</h3>
+
+<p>This one took a little while, because for some reason I was getting hung up on what now looks like a really simple conditional. Just goes to show that taking a break can be VERY helpful when coding.</p>
+
+<p><em>Given 3 int values, a b c, return their sum. However, if any of the values is a teen -- in the range 13..19 inclusive -- then that value counts as 0, except 15 and 16 do not count as a teens. Write a separate helper &quot;def fix_teen(n):&quot;that takes in an int value and returns that value fixed for the teen rule. In this way, you avoid repeating the teen code 3 times (i.e. &quot;decomposition&quot;). Define the helper below and at the same indent level as the main no</em>teen_sum()._</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">def fix_teen(n):
+    if(n&gt;12 and n &lt; 20):
+      if(n != 15 and n != 16):
+        n = 0
+    return n
+def no_teen_sum(a, b, c):   
+  return (fix_teen(a) + fix_teen(b) + fix_teen(c))
+</code></pre></div>
+<h1 id="toc_4">The Screenshots</h1>
+
+<p>Here are my screenshots:
+<img src="http://i972.photobucket.com/albums/ae206/fluffbrain/INLS560/screen_warmup2.png" alt="Warmup-2 screenshot">
+<img src="http://i972.photobucket.com/albums/ae206/fluffbrain/INLS560/screen_list2.png" alt="Lists-2 screenshot">
+<img src="http://i972.photobucket.com/albums/ae206/fluffbrain/INLS560/screen_logic2.png" alt="Logic-2 screenshot">
+<img src="http://i972.photobucket.com/albums/ae206/fluffbrain/INLS560/screen_string2.png" alt="Strings-2 screenshot"></p>
+
+</div>
+
+<div class="end">
+	
+		
+	Libby is a BSIS student in SILS. She double majors in Geography, and is working on a minor in Art History. Find <strong>Libby Livingston</strong> on <a href="http://twitter.com/">Twitter</a>, <a href="http://github.com/libbby">Github</a>, and <a href="">on the web</a>. <br />
+
+	
+	
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'silshack'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+            </div>
+            <div class="footer">
+                <div class="contact">
+                    <p>
+                        INLS 560 - "Programming for Information Professionals"
+                    </p>
+                    <p>
+                        Another <a href="http://github.com/silshack/professorjekyll">silshack</a> by <a href="http://twitter.com/hauspoor/">@hauspoor</a> & friends
+                        <br />
+                    </p>
+                    <p>
+                        This page was generated on
+                        <script type="text/javascript">
+                            var date = new Date('03/27/14 16:19:53 -0400');
+                            document.write(date.toLocaleDateString() + " " + date.toLocaleTimeString())
+                        </script>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+    <!-- Script imports at bottom to decrease page-load-time-->
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirrorepl.js" type="text/javascript"></script>
+    <script src="/spring2014/js/python.js" type="text/javascript"></script>
+    <script src="/spring2014/js/codemirror/js/bash.js" type="text/javascript"></script>
+    <script src="/spring2014/js/editor.js" type="text/javascript"></script>
+
+
+</body>
+<script src="/spring2014/js/date-cs.js" type="text/javascript"></script>
+
+</html>
